@@ -20,17 +20,17 @@ function oneRound(userChoice, computerChoice) {
          (userChoice == "scissors" && computerChoice == "paper") ||
          (userChoice == "paper" && computerChoice == "rock")) {
             alert("You win this round!");
-            return "win"
+            return "win";
 
          /* Check if it's a tie and declare tie*/
          } else if (userChoice === computerChoice){
             alert("This round is a tie");
-            return "tie"
+            return "tie";
 
          /* Otherwise computer wins and declare if computer wins */
          } else {
             alert("Computer wins this round");
-            return "lose"
+            return "lose";
          }
 }
 
@@ -46,12 +46,12 @@ function game() {
 
         /* Receive input from user and make sure it is case insensitive value*/
         let userChoice = window.prompt("Choose your weapon: Rock, Paper or Scissors").trim();
-        alert(" You have chosen: " + userChoice)
+        alert(" You have chosen: " + userChoice);
   
         /* Assign userChoice and compChoice*/
         userChoice = userChoice.toLowerCase();
     
-        compChoice = computerChoice()
+        compChoice = computerChoice();
         
         /* Play one round and return the result*/
         result = oneRound(userChoice, compChoice);
@@ -64,16 +64,16 @@ function game() {
         }
         
         /*Let user know the current score */
-        alert(`Current score is: ${userScore} to ${compScore}`)  
+        alert(`Current score is: ${userScore} to ${compScore}`)  ;
         }  
         
         /* Declare the winner*/
         if (userScore > compScore) {
-            alert("You are the Grand Champion!")
+            alert("You are the Grand Champion!");
         } else if (userScore == compScore) {
-            alert("It's a tie")
+            alert("It's a tie");
         } else {
-            alert("You lose. Better luck next time!")
+            alert("You lose. Better luck next time!");
         }
 
 }
