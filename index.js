@@ -48,6 +48,7 @@ Choose your weapon: Rock, Paper or Scissors`).trim();
     
         compChoice = computerChoice();
 
+        /* Tell user about userChoice and computerChoice */
         alert(`You choose: ${userChoice.toUpperCase()} | Computer chooses: ${compChoice.toUpperCase()}`);
         
         /* Play one round and return the result */
@@ -63,7 +64,6 @@ Choose your weapon: Rock, Paper or Scissors`).trim();
         } else {
             alert(`Round ${round} is a tie. Current score is: ${userScore} to ${compScore}`);
         }
-        
         }  
         
         /* Declare the winner */
@@ -77,7 +77,9 @@ Choose your weapon: Rock, Paper or Scissors`).trim();
 
         /* Ask user to play again */
         replay = window.prompt("Play again?: ").trim();
+
         replay = replay.toLowerCase();
+        
         if (replay == "yes") {
             game();
         } else {
