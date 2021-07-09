@@ -34,14 +34,19 @@ function game() {
     
     /* Variables to keep track of the score */
     let userScore = 0
+
     let compScore = 0
 
     /* Loop to run 5 rounds */
     for (round = 1; round < 6; round++) {
 
-        /* Receive input from user and make sure it is case insensitive value*/
-        let userChoice = window.prompt(`| Round ${round}/5 |
+        /* Receive input from user and make sure it's always valid*/
+        let userChoice
+
+        while (userChoice !== "rock" && userChoice !== "scissors" && userChoice !== "paper") {
+        userChoice = window.prompt(`| Round ${round}/5 |
 Choose your weapon: Rock, Paper or Scissors`).trim();
+        } 
   
         /* Assign userChoice and compChoice and let the user know*/
         userChoice = userChoice.toLowerCase();
