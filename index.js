@@ -45,12 +45,11 @@ function game() {
 
         while (userChoice !== "rock" && userChoice !== "scissors" && userChoice !== "paper") {
         userChoice = window.prompt(`| Round ${round}/5 |
-Choose your weapon: Rock, Paper or Scissors`).trim();
+Choose your weapon: Rock, Paper or Scissors`).trim().toLocaleLowerCase();
         } 
   
-        /* Assign userChoice and compChoice and let the user know*/
-        userChoice = userChoice.toLowerCase();
-    
+        /* Generate random choice for computer*/
+
         compChoice = computerChoice();
 
         /* Tell user about userChoice and computerChoice */
