@@ -8,9 +8,12 @@ html {
     grid-template-rows: 1fr 1fr 1fr;
     grid-template-areas: "div1 div1 div1"
                          ". main ."
-                         "score score score ";
+                         "div2 div2 div2 ";
     width: 100vw;
     height: 100vh;
+    justify-items: center;
+    align-items: center;
+    font-family: sans-serif;
 
 }
 img {
@@ -21,22 +24,26 @@ img {
 
 img:hover {
     width: 80px;
+    padding: 17px
 }
 
 main {
     background-color:rgb(41, 41, 41);
     border-radius: 15px;
+    box-shadow: 1px 1px 10px #00000087;
     grid-area: main;
     display: grid;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 1.5fr 1fr .5fr;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-areas: "rock paper scissors"
-                         ".      .       ."
+                         "score score score"
+                         "result result round"
 }
+
 
 #rock {
     grid-area: rock;
-
+}
 #paper {
     grid-area: paper;
 }
@@ -44,11 +51,35 @@ main {
 #scissors {
     grid-area: scissors;
 }
+
+#score {
+    grid-area: score;
+    font-size: 2em;
+    color: rgba(255, 255, 255, 0.863);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#round {
+    grid-area: round;
+    display: flex;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.863);
+}
+
+#result {
+    grid-area: result;
+    display: flex;
+    justify-content: flex-end;
+    color: rgba(255, 255, 255, 0.863);
+}
  #div1 {
     grid-area: div1
  }
 
- #score {
+ #div2 {
     grid-area: div2
 
  }
+
