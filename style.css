@@ -1,0 +1,54 @@
+html {
+    background-color : rgb(37, 37, 37);
+}
+
+#wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas: "div1 div1 div1"
+                         ". main ."
+                         "score score score ";
+    width: 100vw;
+    height: 100vh;
+
+}
+img {
+    padding: 25px;
+    width : 64px;
+    height: auto;
+}
+
+img:hover {
+    width: 80px;
+}
+
+main {
+    background-color:rgb(41, 41, 41);
+    border-radius: 15px;
+    grid-area: main;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: "rock paper scissors"
+                         ".      .       ."
+}
+
+#rock {
+    grid-area: rock;
+
+#paper {
+    grid-area: paper;
+}
+
+#scissors {
+    grid-area: scissors;
+}
+ #div1 {
+    grid-area: div1
+ }
+
+ #score {
+    grid-area: div2
+
+ }
