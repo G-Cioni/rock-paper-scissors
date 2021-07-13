@@ -1,22 +1,23 @@
+// define gloval variables
+var userScore = 0;
 
-    var userScore = 0;
+var compScore = 0;
 
-    var compScore = 0;
+var currentRound = 0;
 
-    var currentRound = 0;
-    
-    
+// assign html to js variables
+let score = document.querySelector("#score")
+let round = document.querySelector("#round")
+let result = document.querySelector("#result")
+let finalResult = document.querySelector("#finalResult")
 
-    let score = document.querySelector("#score")
-    let round = document.querySelector("#round")
-    let result = document.querySelector("#result")
-    score.textContent = `Current score: ${userScore} - ${compScore}`
-    round.textContent = `Round ${currentRound}`
-    
-/* Function for generating a random choice for the computer */
-function computerSelection() {
-    /* Return random value that corresponds to rock paper or scissors*/
-       random = Math.floor(Math.random() * 3);
+// set initial text content
+score.textContent = `Current score: ${userScore} - ${compScore}`
+round.textContent = `Round ${currentRound}`
+
+//Function for generating a random choice for the computer
+    function computerSelection() {
+    random = Math.floor(Math.random() * 3);
         if (random == 0) {
             return "rock";
         } else if (random == 1) {
@@ -27,123 +28,71 @@ function computerSelection() {
     }
     
 
-/* Function that runs one round*/
-function oneRoundRock() {
+// function to play one round
+function oneRound(userChoice) {
     computerChoice = computerSelection()
     /* Check if user wins*/
-    if (computerChoice === "scissors") {
-            console.log("win")
+    if ((userChoice == "rock" && computerChoice == "scissors") ||
+            (userChoice == "scissors" && computerChoice == "paper") ||
+            (userChoice == "paper" && computerChoice == "rock")) {
             userScore++
-            score.textContent = `Current score: ${userScore}-${compScore}`
+            score.textContent = `Current score: ${userScore} - ${compScore}`
             currentRound++
             round.textContent = `Round ${currentRound}`
+            result.textContent = `${userChoice.toUpperCase()} vs ${computerChoice.toUpperCase()}`
             return "win";
-         /* Check if it's a tie*/
-         } else if (computerChoice === "rock"){
-            console.log("tie")
-            score.textContent = `Current score: ${userScore}-${compScore}`
+            /* Check if it's a tie*/
+            } else if (userChoice === computerChoice){
+            score.textContent = `Current score: ${userScore} - ${compScore}`
             currentRound++
             round.textContent = `Round ${currentRound}`
+            result.textContent = `${userChoice.toUpperCase()} vs ${computerChoice.toUpperCase()}`
             return "tie";
-         /* Otherwise computer wins */
-         } else {
+            /* Otherwise computer wins */
+            } else {
             compScore++
-            score.textContent = `Current score: ${userScore}-${compScore}`
+            score.textContent = `Current score: ${userScore} - ${compScore}`
             currentRound++
             round.textContent = `Round ${currentRound}`
-            console.log("lose")
+            result.textContent = `${userChoice.toUpperCase()} vs ${computerChoice.toUpperCase()}`
             return "lose";
-         }
+            }
 }
 
-/* Function that runs one round*/
-function oneRoundPaper() {
-    computerChoice = computerSelection()
-    /* Check if user wins*/
-    if (computerChoice === "rock") {
-        console.log("win")
-        userScore++
-        score.textContent = `Current score: ${userScore}-${compScore}`
-        currentRound++
-        round.textContent = `Round ${currentRound}`
-        return "win";
-         /* Check if it's a tie*/
-         } else if (computerChoice === "paper"){
-            console.log("tie")
-            currentRound++
-            round.textContent = `Round ${currentRound}`
-            return "tie";
-         /* Otherwise computer wins */
-         } else {
-            compScore++
-            score.textContent = `Current score: ${userScore}-${compScore}`
-            currentRound++
-            round.textContent = `Round ${currentRound}`
-            console.log("lose")
-            return "lose";
-         }
-}
-
-/* Function that runs one round*/
-function oneRoundScissors() {
-    computerChoice = computerSelection()
-    /* Check if user wins*/
-    if (computerChoice === "paper") {
-            console.log("win")
-            userScore++
-            score.textContent = `Current score: ${userScore}-${compScore}`
-            currentRound++
-            round.textContent = `Round ${currentRound}`
-            return "win";
-         /* Check if it's a tie*/
-         } else if (computerChoice === "scissors"){
-            console.log("tie")
-            currentRound++
-            round.textContent = `Round ${currentRound}`
-            return "tie";
-         /* Otherwise computer wins */
-         } else {
-            compScore++
-            score.textContent = `Current score: ${userScore}-${compScore}`
-            currentRound++
-            round.textContent = `Round ${currentRound}`
-            console.log("lose")
-            return "lose";
-         }
-}
-
-
+// function to check who the winner is upon reach a score of 5
 function checkWinner() {
     if (userScore == 5) {
-        result.textContent = "You are the Gand Champion!";
+        finalResult.textContent = "You are the Grand Champion!";
         userScore = 0;
         compScore = 0;
         currentRound = 0;
     } else if (compScore == 5){
-        result.textContent = "You lose! Better luck next time.";
+        finalResult.textContent = "You lose! Better luck next time.";
         userScore = 0;
         compScore = 0;
         currentRound = 0;
-    
     } else {
-        result.textContent = "";
+        finalResult.textContent = ``;
     }
 }
 
-
+// event listeners to get everything in motion
     
-    let rock = document.querySelector("#rock") 
+let rock = document.querySelector("#rock") 
 
-    rock.addEventListener("click", () => {oneRoundRock()});
-    rock.addEventListener("click", () => {checkWinner()});
+rock.addEventListener("click", () => {oneRound("rock")});
+rock.addEventListener("click", () => userChoice = "rock");
+rock.addEventListener("click", () => {checkWinner()});
 
-    let paper = document.querySelector("#paper") 
+let paper = document.querySelector("#paper") 
 
-    paper.addEventListener("click", () => {oneRoundPaper()});
-    paper.addEventListener("click", () => {checkWinner()});
+paper.addEventListener("click", () => {oneRound("paper")});
+paper.addEventListener("click", () => userChoice = "paper");
+paper.addEventListener("click", () => {checkWinner()});
 
-    let scissors = document.querySelector("#scissors") 
+let scissors = document.querySelector("#scissors") 
 
-    scissors.addEventListener("click", () => {oneRoundScissors()});
-    scissors.addEventListener("click", () => {checkWinner()});
+scissors.addEventListener("click", () => {oneRound("scissors")});
+scissors.addEventListener("click", () => userChoice = "scissors");
+scissors.addEventListener("click", () => {checkWinner()});
 
